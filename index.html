@@ -368,23 +368,34 @@ section{padding:100px 24px;position:relative}
 
 /* ---------- Menu ---------- */
 .menu-tabs{
-  display:flex;flex-wrap:wrap;gap:10px;
+  display:flex;flex-wrap:nowrap;gap:10px;
   margin-bottom:48px;
   padding-bottom:24px;
   border-bottom:1px solid rgba(139,30,30,.15);
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scroll-snap-type:x proximity;
+  scrollbar-width:thin;
+  scrollbar-color:var(--gold-soft) transparent;
 }
+.menu-tabs::-webkit-scrollbar{height:6px}
+.menu-tabs::-webkit-scrollbar-track{background:transparent}
+.menu-tabs::-webkit-scrollbar-thumb{background:var(--gold-soft);border-radius:999px}
 .tab{
+  flex:0 0 auto;
+  white-space:nowrap;
+  scroll-snap-align:start;
   padding:10px 22px;
   border-radius:999px;
   font-size:14px;font-weight:500;
   color:var(--ink-soft);
-  border:1px solid transparent;
+  border:1px solid rgba(139,30,30,.15);
   transition:all .2s;
 }
 .tab:hover{color:var(--damask)}
 .tab.active{
-  background:var(--ink);color:var(--cream);
-  border-color:var(--ink);
+  background:var(--damask);color:#fff;
+  border-color:var(--damask);
 }
 .menu-grid{
   display:grid;grid-template-columns:repeat(2,1fr);gap:16px 60px;
